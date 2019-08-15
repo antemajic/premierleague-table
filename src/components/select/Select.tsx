@@ -45,7 +45,7 @@ const BootstrapInput = withStyles((theme: Theme) =>
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: 'flex',
+      display: 'inline-flex',
       flexWrap: 'wrap',
     },
     margin: {
@@ -76,7 +76,7 @@ export default function CustomizedSelects() {
             <em>None</em>
           </MenuItem>
           {matchweek.map(element => {
-              return <MenuItem value={element}>{element}</MenuItem>
+              return <MenuItem value={element} key = {element}>{element}</MenuItem>
           })}
         </Select>
       </FormControl>

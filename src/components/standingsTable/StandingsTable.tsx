@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import data from '../../data.json'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,7 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
     },
     paper: {
-      marginTop: theme.spacing(3),
       marginLeft: '12.5%',
       width: '75%',
       overflowX: 'auto',
@@ -36,6 +36,11 @@ function createData(position: string, club: string, fat: number, carbs: number, 
 
 const rows = [
   createData('1', 'Chelsea', 6.0, 777, 4.0),
+  createData('2', 'Manchester United', 6.0, 777, 4.0),
+  createData('3', 'Liverpool', 6.0, 777, 4.0),
+  createData('4', 'Manchester City', 6.0, 777, 4.0),
+  createData('5', 'Tottenham  ', 6.0, 777, 4.0),
+  createData('6', 'Arsenal', 6.0, 777, 4.0)
 ];
 
 export default function DenseTable() {
@@ -62,15 +67,24 @@ export default function DenseTable() {
           </TableHead>
           <TableBody>
             {rows.map(row => (
-              <TableRow key={row.position}>
-                <TableCell component="th" scope="row">
-                  {row.position}
-                </TableCell>
-                <TableCell align="left">{row.club}</TableCell>
-                <TableCell align="left">{row.fat}</TableCell>
-                <TableCell align="left">{row.carbs}</TableCell>
-                <TableCell align="left">{row.protein}</TableCell>
-              </TableRow>
+              row.position <= '4' ? <TableRow key={row.position} style = {{backgroundColor : 'lightgreen'}}>
+              <TableCell component="th" scope="row">
+                {row.position}
+              </TableCell>
+              <TableCell align="left">{row.club}</TableCell>
+              <TableCell align="left">{row.fat}</TableCell>
+              <TableCell align="left">{row.carbs}</TableCell>
+              <TableCell align="left">{row.protein}</TableCell>
+            </TableRow> : <TableRow key={row.position}>
+            <TableCell component="th" scope="row">
+              {row.position}
+            </TableCell>
+            <TableCell align="left">{row.club}</TableCell>
+            <TableCell align="left">{row.fat}</TableCell>
+            <TableCell align="left">{row.carbs}</TableCell>
+            <TableCell align="left">{row.protein}</TableCell>
+          </TableRow>
+              
             ))}
           </TableBody>
         </Table>
