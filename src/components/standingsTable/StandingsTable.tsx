@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {mapTableStandings} from '../../helperFunctions/helper'
 import data from '../../data.json'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,6 +55,7 @@ let defineColorByPosition = (position: number) => {
 }
 
 export default function DenseTable() {
+  mapTableStandings(data, 2);
   const classes = useStyles();
   return (
     <div className={classes.root}>
