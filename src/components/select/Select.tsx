@@ -58,17 +58,22 @@ const matchweek = [
     '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38'
   ];
 
-export default function CustomizedSelects() {
+  interface SelectProps {
+    matchweekSelect: Function
+}
+
+export default function CustomizedSelects(props: SelectProps) {
   const classes = useStyles();
-  const [age, setAge] = React.useState('');
+  const [matchweekValue, setMatchweekValue] = React.useState('');
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setAge(event.target.value as string);
+    setMatchweekValue(event.target.value as string)
+    props.matchweekSelect(event.target.value)
   };
   return (
     <form className={classes.root} autoComplete="off">
       <FormControl className={classes.margin}>
         <Select
-          value={age}
+          value={matchweekValue}
           onChange={handleChange}
           input={<BootstrapInput name="age" id="age-customized-select" />}
         >
@@ -76,7 +81,7 @@ export default function CustomizedSelects() {
             <em>None</em>
           </MenuItem>
           {matchweek.map(element => {
-              return <MenuItem value={element} key = {element}>{element}</MenuItem>
+              return <MenuItem value = {element} key = {element}>{element}</MenuItem>
           })}
         </Select>
       </FormControl>

@@ -43,9 +43,18 @@ const rows = [
   createData('6', 'Arsenal', 6.0, 777, 4.0)
 ];
 
+let defineColorByPosition = (position: number) => {
+  if (position <= 4) {
+    return 'lightgreen'
+  }
+  else if (position > 17){
+    return 'red'
+  }
+  else return 'white'
+}
+
 export default function DenseTable() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -65,7 +74,7 @@ export default function DenseTable() {
               <TableCell align="left">Points</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+{/*           <TableBody>
             {rows.map(row => (
               row.position <= '4' ? <TableRow key={row.position} style = {{backgroundColor : 'lightgreen'}}>
               <TableCell component="th" scope="row">
@@ -85,6 +94,19 @@ export default function DenseTable() {
             <TableCell align="left">{row.protein}</TableCell>
           </TableRow>
               
+            ))}
+          </TableBody> */}
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.position} style = {{backgroundColor: defineColorByPosition(parseInt(row.position))}}>
+              <TableCell component="th" scope="row">
+                {row.position}
+              </TableCell>
+              <TableCell align="left">{row.club}</TableCell>
+              <TableCell align="left">{row.fat}</TableCell>
+              <TableCell align="left">{row.carbs}</TableCell>
+              <TableCell align="left">{row.protein}</TableCell>
+            </TableRow>
             ))}
           </TableBody>
         </Table>
