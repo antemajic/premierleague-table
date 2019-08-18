@@ -54,6 +54,7 @@ export default function DenseTable(props: MatchweekSelectProps) {
 
 console.log('rows data', rows)
   return (
+   
     <div className={classes.root}>
       <Paper className={classes.paper}>
         <Table className={classes.table} size="small">
