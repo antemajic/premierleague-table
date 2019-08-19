@@ -37,8 +37,10 @@ class App extends Component<{}, AppState> {
         <span className = "select"><label>Select matchweek:</label><Select matchweekSelect = {this.getMatchweek}/></span>
       </div>
       <span className = "matchweekResults"><label>Matchweek {this.state.matchweek} Results</label><MatchweekResults matchweek = {this.state.matchweek}/></span>
-      
+      <div style={{position: "relative"}}>
       <StandingsTable matchweek = {this.state.matchweek}/>
+      </div>
+     
     </div>
   );
   }
