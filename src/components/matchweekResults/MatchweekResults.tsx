@@ -52,7 +52,6 @@ export default function DenseTable(props: MatchweekSelectProps) {
   const rows= props.matchweek !== undefined ? mapResults(data, props.matchweek) : mapResults(data, 38);
   const classes = useStyles();
 
-console.log('rows data', rows)
   return (
    
     <div className={classes.root}>

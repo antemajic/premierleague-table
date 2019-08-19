@@ -38,7 +38,7 @@ class App extends Component<{}, AppState> {
       </div>
       <span className = "matchweekResults"><label>Matchweek {this.state.matchweek} Results</label><MatchweekResults matchweek = {this.state.matchweek}/></span>
       
-      <StandingsTable />
+      <StandingsTable matchweek = {this.state.matchweek}/>
     </div>
   );
   }

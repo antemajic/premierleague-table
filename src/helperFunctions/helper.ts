@@ -29,7 +29,7 @@ const teams: Array<string> = ["Hull City", "Leicester City", "Burnley", "Swansea
 } */
 let teamResults:Array<any> = [
     {name: "Hull City", won: 0, drawn:0}, 
-    {name: "Leiceste City", won: 0, drawn:0}, 
+    {name: "Leicester City", won: 0, drawn:0}, 
     {name: "Burnley", won: 0, drawn:0}, 
     {name: "Swansea", won: 0, drawn:0}, 
     {name: "Crystal Palace", won: 0, drawn:0}, 
@@ -91,12 +91,14 @@ export const mapResults = (data: Array<any>, matchweek: number) => {
 
 export const mapTableStandings = (data: Array<any>, matchweek: number) =>
 {
+    let dataTable : Array<any> = [];
     let standingsData : Array<any> = [];
     let matches:Array<any> = []
     for (let index = 0; index < matchweek; index++) {
         matches.push(data[index].matches)
+        matches[index].map(element => dataTable.push(element))
     }
-        let dataTable=matches[0].concat(matches[1], matches[2])
+
         dataTable.map((matches: Array<object>, i) =>
     {
     let newElement: Object = {

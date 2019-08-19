@@ -54,8 +54,12 @@ let defineColorByPosition = (position: number) => {
   else return 'white'
 }
 
-export default function DenseTable() {
-  mapTableStandings(data, 3);
+interface StandingsTableProps {
+  matchweek: number
+}
+
+export default function DenseTable(props: StandingsTableProps) {
+  mapTableStandings(data, props.matchweek );
   const classes = useStyles();
   return (
     <div className={classes.root}>
