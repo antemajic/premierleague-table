@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { simpleAction } from './actions/simpleActions';
-
 
 import './App.css';
 import StandingsTable from './components/standingsTable/StandingsTable'
@@ -47,12 +44,6 @@ class App extends Component<{}, AppState> {
 
 
 }
-let mapStateToProps = state => ({
-  ...state
-})
-let mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-})
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
 

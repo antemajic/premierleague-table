@@ -22,8 +22,6 @@
   },
   "include": [
     "src",
-    "src/components",
-    "src/actions",
-    "src/reducers"
+    "src/components"
   ]
 }
