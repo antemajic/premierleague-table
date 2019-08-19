@@ -20,7 +20,6 @@ const BootstrapInput = withStyles((theme: Theme) =>
       fontSize: 16,
       padding: '10px 26px 10px 12px',
       transition: theme.transitions.create(['border-color', 'box-shadow']),
-      // Use the system font instead of the default Roboto font.
       fontFamily: [
         '-apple-system',
         'BlinkMacSystemFont',
@@ -54,12 +53,12 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 const matchweek = [
-    '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 
-    '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38'
-  ];
+  '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19',
+  '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38'
+];
 
-  interface SelectProps {
-    matchweekSelect: Function
+interface SelectProps {
+  matchweekSelect: Function
 }
 
 export default function CustomizedSelects(props: SelectProps) {
@@ -81,11 +80,11 @@ export default function CustomizedSelects(props: SelectProps) {
             <em>None</em>
           </MenuItem>
           {matchweek.map(element => {
-              return <MenuItem value = {element} key = {element}>{element}</MenuItem>
+            return <MenuItem value={element} key={element}>{element}</MenuItem>
           })}
         </Select>
       </FormControl>
-     
+
     </form>
   );
 }
