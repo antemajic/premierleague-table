@@ -1,0 +1,10 @@
+.formIndicator {
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    background: orange;
+    margin-left:5px;
+    
+
+}

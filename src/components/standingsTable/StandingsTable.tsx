@@ -8,6 +8,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {mapTableStandings} from '../../helperFunctions/helper'
 import data from '../../data.json'
+import './styles.css'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '75%',
       overflowX: 'auto',
       marginBottom: theme.spacing(2),
+      maxHeight: 650
     },
     table: {
       minWidth: 650,
@@ -46,12 +48,25 @@ const rows = [
 
 let defineColorByPosition = (position: number) => {
   if (position <= 4) {
-    return 'lightgreen'
+    return '#b3ffcc'
   }
   else if (position > 17){
+    return '#ff9999'
+  }
+  else return '#ffffff'
+}
+
+interface StandingsTableProps {
+  matchweek: number
+}
+let defineForm = (form: string) => {
+  if (form === 'W') {
+    return 'green'
+  }
+  else if (form === 'L'){
     return 'red'
   }
-  else return 'white'
+  
 }
 
 interface StandingsTableProps {
@@ -59,7 +74,7 @@ interface StandingsTableProps {
 }
 
 export default function DenseTable(props: StandingsTableProps) {
-  mapTableStandings(data, props.matchweek );
+  let dataForRender = mapTableStandings(data,  props.matchweek);
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -78,6 +93,7 @@ export default function DenseTable(props: StandingsTableProps) {
               <TableCell align="left">Goals Conceded</TableCell>
               <TableCell align="left">Goals Difference</TableCell>
               <TableCell align="left">Points</TableCell>
+              <TableCell align="left">Form</TableCell>
             </TableRow>
           </TableHead>
 {/*           <TableBody>
@@ -103,15 +119,21 @@ export default function DenseTable(props: StandingsTableProps) {
             ))}
           </TableBody> */}
           <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.position} style = {{backgroundColor: defineColorByPosition(parseInt(row.position))}}>
+            {dataForRender.map((row, index) => (
+              <TableRow key={index + 1} style = {{backgroundColor: defineColorByPosition(index +1)}}>
               <TableCell component="th" scope="row">
-                {row.position}
+                {index + 1}
               </TableCell>
-              <TableCell align="left">{row.club}</TableCell>
-              <TableCell align="left">{row.fat}</TableCell>
-              <TableCell align="left">{row.carbs}</TableCell>
-              <TableCell align="left">{row.protein}</TableCell>
+              <TableCell align="left">{row.name}</TableCell>
+              <TableCell align="left">{props.matchweek}</TableCell>
+              <TableCell align="left">{row.won}</TableCell>
+              <TableCell align="left">{row.drawn}</TableCell>
+              <TableCell align="left">{row.lost}</TableCell>
+              <TableCell align="left">{row.goalsScored}</TableCell>
+              <TableCell align="left">{row.goalsConceded}</TableCell>
+              <TableCell align="left">{row.goalsDifference}</TableCell>
+              <TableCell align="left">{row.points}</TableCell>
+              <TableCell align="left" style={{width: '80px'}}>{ row.form.slice(Math.max(row.form.length - 5, 0)).map(element => <div className="formIndicator" style={{backgroundColor: defineForm(element)}}></div>)}</TableCell>
             </TableRow>
             ))}
           </TableBody>
