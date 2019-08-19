@@ -55,7 +55,7 @@ let defineColorByPosition = (position: number) => {
 }
 
 export default function DenseTable() {
-  mapTableStandings(data, 2);
+  mapTableStandings(data, 3);
   const classes = useStyles();
   return (
     <div className={classes.root}>
